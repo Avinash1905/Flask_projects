@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    Developer Login
+
+</div>
+
+{% with messages=get_flashed_messages() %}
+
+{% if messages %}
+
+{% for msg in messages %}
+
+<h3 style="text-align:center;">{{ msg }}</h3>
+
+{% endfor %}
+
+{% endif %}
+
+{% endwith %}
+
+<div class="container">
+
+    <div class="card">
+
+        <form action="/login"
+              method="POST">
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter Email">
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password">
+
+            <button type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

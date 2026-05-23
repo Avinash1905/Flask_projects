@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Register</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    Register Developer
+
+</div>
+
+{% with messages=get_flashed_messages() %}
+
+{% if messages %}
+
+{% for msg in messages %}
+
+<h3 style="text-align:center;">{{ msg }}</h3>
+
+{% endfor %}
+
+{% endif %}
+
+{% endwith %}
+
+<div class="container">
+
+    <div class="card">
+
+        <form action="/register"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <input type="text"
+                   name="name"
+                   placeholder="Enter Name">
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter Email">
+
+            <input type="text"
+                   name="skill"
+                   placeholder="Enter Skill">
+
+            <input type="text"
+                   name="experience"
+                   placeholder="Experience Level">
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password">
+
+            <input type="file"
+                   name="profile_image">
+
+            <button type="submit">
+
+                Register
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

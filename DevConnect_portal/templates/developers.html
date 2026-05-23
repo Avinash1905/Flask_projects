@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Developers</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    Developers List
+
+</div>
+
+{% with messages=get_flashed_messages() %}
+
+{% if messages %}
+
+{% for msg in messages %}
+
+<h3 style="text-align:center;">{{ msg }}</h3>
+
+{% endfor %}
+
+{% endif %}
+
+{% endwith %}
+
+<div class="container">
+
+    {% for dev in developers %}
+
+    <div class="card">
+
+        <img src="/static/uploads/{{ dev[6] }}"
+             width="150">
+
+        <h2>{{ dev[1] }}</h2>
+
+        <p>Email: {{ dev[2] }}</p>
+
+        <p>Skill: {{ dev[3] }}</p>
+
+        <p>Experience: {{ dev[4] }}</p>
+
+        <a href="/developer/{{ dev[0] }}">
+
+            <button>View Profile</button>
+
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+
+</html>

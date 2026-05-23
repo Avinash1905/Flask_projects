@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Search Results</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="navbar">
+
+    Search Results
+
+</div>
+
+<div class="container">
+
+{% for d in dev %}
+
+    <div class="card">
+
+        <img src="/static/uploads/{{ d[6] }}"
+             width="150">
+
+        <h2>{{ d[1] }}</h2>
+
+        <p>Email: {{ d[2] }}</p>
+
+        <p>Skill: {{ d[3] }}</p>
+
+        <p>Experience: {{ d[4] }}</p>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>

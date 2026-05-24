@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect,flash,session,jsonify
 import mysql.connector
+import requests
 
 from werkzeug.security import (
     generate_password_hash,
@@ -223,7 +224,14 @@ def list():
 
         return redirect("/login")
 
+@app.route("/ai-chat")
+def ai_chat():
 
+    if "user" not in session:
+
+        return redirect("/login")
+
+    return render_template("ai_chat.html")
 # INDIVIDUAL PROFILE
 @app.route("/developer/<int:id>")
 def developer_profile(id):
@@ -357,38 +365,102 @@ def search():
 
 
 # REST API
-@app.route("/api/developers")
-def api_developers():
+@app.route("/ai-chat", methods=["POST"])
+def ai_chatbot():
 
+    question = request.form["question"]
+
+    # FETCH DEVELOPERS
     sql = "select * from developers"
 
     cursor.execute(sql)
 
     developers = cursor.fetchall()
 
-    output = []
+    # CREATE CONTEXT
+    context = ""
 
     for dev in developers:
 
-        data = {
+        context += f"""
 
-            "id": dev[0],
+        Name: {dev[1]}
+        Email: {dev[2]}
+        Skill: {dev[3]}
+        Experience: {dev[4]}
 
-            "name": dev[1],
+        """
 
-            "email": dev[2],
+    # AI PROMPT
+    prompt = f"""
 
-            "skill": dev[3],
+    You are DevConnect AI Assistant.
 
-            "experience": dev[4],
+    Answer ONLY using the developers data below.
 
-            "image": dev[6]
-        }
+    Developers Data:
 
-        output.append(data)
+    {context}
 
-    return jsonify(output)
+    User Question:
 
+    {question}
+
+    """
+
+    try:
+
+        # OPENROUTER API REQUEST
+        response = requests.post(
+
+            url="https://openrouter.ai/api/v1/chat/completions",
+
+            headers={
+
+                "Authorization":
+                "Bearer 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",
+
+                "Content-Type":
+                "application/json"
+            },
+
+            json={
+
+                "model":
+                "openai/gpt-3.5-turbo",
+
+                "messages":[
+
+                    {
+                        "role":"user",
+
+                        "content":prompt
+                    }
+                ]
+            }
+        )
+
+        data = response.json()
+
+        print(data)
+
+        # SUCCESS RESPONSE
+        if "choices" in data:
+
+            answer = data["choices"][0]["message"]["content"]
+
+        else:
+
+            answer = "API Error: " + str(data)
+
+    except Exception as e:
+
+        answer = str(e)
+
+    return render_template(
+        "ai_chat.html",
+        answer=answer
+    )
 
 if __name__ == "__main__":
 

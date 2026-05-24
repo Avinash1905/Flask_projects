@@ -1,24 +1,22 @@
-# DevConnect Portal
+# DevConnect Portal 🚀
 
-DevConnect is a full-stack developer community platform built using Flask and MySQL.  
-The application allows developers to create profiles, upload profile images, search developers by skill, and manage their accounts through authentication and session-based access control.
+DevConnect is a full-stack developer community platform built using Flask and MySQL.
 
-The project was built to practice backend development concepts such as authentication, REST APIs, file uploads, session handling, and CRUD operations.
+The application allows developers to create profiles, upload profile images, search developers by skill, and interact with an AI-powered assistant integrated using OpenRouter API.
 
 ---
 
 # Features
 
-- User Registration & Login
+- User Authentication
 - Password Hashing
-- Session-Based Authentication
-- Profile Image Upload
-- Developer Search by Skill
+- Session Management
 - CRUD Operations
-- Individual Developer Profiles
-- REST API Endpoint
-- Flash Messages
-- Protected Routes
+- Developer Search
+- Profile Image Upload
+- REST APIs
+- AI Chatbot Integration
+- Dynamic Developer Profiles
 
 ---
 
@@ -32,36 +30,40 @@ The project was built to practice backend development concepts such as authentic
 ## Frontend
 - HTML
 - CSS
-- Jinja2 Templates
+- Jinja2
 
-## Security
-- Werkzeug Password Hashing
-- Flask Sessions
+## APIs & Tools
+- OpenRouter API
+- REST APIs
+- Git & GitHub
 
 ---
 
 # Project Structure
 
 ```bash
-project/
+DevConnect/
 
-├── app.py
-├── requirements.txt
+│── app.py
+│── requirements.txt
+│── README.md
+
 ├── static/
 │   ├── style.css
 │   └── uploads/
-│
-└── templates/
-    ├── index.html
-    ├── register.html
-    ├── login.html
-    ├── dashboard.html
-    ├── developers.html
-    ├── developer_profile.html
-    ├── update.html
-    ├── delete.html
-    ├── search.html
-    └── search_user.html
+
+├── templates/
+│   ├── index.html
+│   ├── register.html
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── developers.html
+│   ├── developer_profile.html
+│   ├── update.html
+│   ├── delete.html
+│   ├── search.html
+│   ├── search_user.html
+│   └── ai_chat.html
 ```
 
 ---
@@ -71,7 +73,7 @@ project/
 ## Clone Repository
 
 ```bash
-git clone <your-github-repo-link>
+git clone https://github.com/Avinash1905/DevConnect.git
 ```
 
 ---
@@ -84,9 +86,9 @@ pip install -r requirements.txt
 
 ---
 
-## Configure MySQL
+# Configure MySQL
 
-Create a database:
+Create database:
 
 ```sql
 CREATE DATABASE new;
@@ -118,7 +120,7 @@ CREATE TABLE developers(
 
 ---
 
-## Run Application
+# Run Application
 
 ```bash
 python app.py
@@ -126,7 +128,7 @@ python app.py
 
 ---
 
-# REST API
+# REST API Endpoint
 
 ## Get All Developers
 
@@ -134,58 +136,47 @@ python app.py
 GET /api/developers
 ```
 
-### Example Response
+---
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Avinash",
-    "email": "avinash@gmail.com",
-    "skill": "Flask",
-    "experience": "Intermediate"
-  }
-]
+# AI Assistant
+
+The project includes an AI-powered assistant using OpenRouter API.
+
+The chatbot answers questions using stored developer data from the MySQL database.
+
+Example Questions:
+
+```text
+Who knows Flask?
+Who has Python skill?
+Which developer is intermediate?
 ```
 
 ---
 
-# Authentication Flow
+# Security Features
 
-- User registers with email and password
-- Password is securely hashed before storing in database
-- Login validates hashed passwords
-- Sessions are used to protect routes
-- Logout clears session data
+- Password Hashing using Werkzeug
+- Session-Based Authentication
+- Protected Routes
+- Secure File Uploads
 
 ---
 
 # Future Improvements
 
+- Resume Upload Feature
 - Admin Dashboard
-- Resume Upload
-- Email Verification
 - JWT Authentication
-- Pagination
-- Dark Mode
+- Chat History
 - Deployment
-
----
-
-# Learning Outcomes
-
-This project helped in understanding:
-
-- Flask Routing
-- MySQL Integration
-- Authentication Systems
-- REST APIs
-- Session Management
-- File Upload Handling
-- Backend Architecture
+- Responsive UI Improvements
 
 ---
 
 # Author
 
-Avinash
+Avinash Rayavarapu
+
+GitHub:
+https://github.com/Avinash1905

@@ -418,7 +418,7 @@ def ai_chatbot():
             headers={
 
                 "Authorization":
-                "Bearer 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",
+                "Bearer api_key",
 
                 "Content-Type":
                 "application/json"

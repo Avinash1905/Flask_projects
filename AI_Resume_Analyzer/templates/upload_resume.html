@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Upload Resume</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>Upload Resume</h1>
+
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <input type="file"
+               name="resume">
+
+        <select name="role">
+
+            <option>
+
+                Python Developer
+
+            </option>
+
+            <option>
+
+                Backend Developer
+
+            </option>
+
+            <option>
+
+                Data Analyst
+
+            </option>
+
+        </select>
+
+        <button type="submit">
+
+            Analyze Resume
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
